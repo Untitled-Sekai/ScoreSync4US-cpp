@@ -13,6 +13,10 @@ FetchContent_Declare(json
 )
 FetchContent_MakeAvailable(json)
 
+if(WIN32)
+  add_definitions(-DNOMINMAX)
+endif()
+
 add_executable(ss4us 
     main.cpp 
     login.cpp 
