@@ -41,12 +41,12 @@ jobs:
     - name: Build (Windows)
       if: matrix.os == 'windows-latest'
       run: |
-        if exist build rmdir /s /q build
-        mkdir build
-        cd build
+        if (Test-Path build) { Remove-Item -Recurse -Force build }
+        New-Item -Path build -ItemType Directory
+        Set-Location build
         cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
         cmake --build . --config Release
-        copy Release\ss4us.exe ..\ss4us-windows.exe
+        Copy-Item Release\ss4us.exe ..\ss4us-windows.exe
 
     - name: Build (Linux)
       if: matrix.os == 'ubuntu-latest'
