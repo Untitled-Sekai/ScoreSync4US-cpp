@@ -13,11 +13,11 @@ FetchContent_Declare(json
 )
 FetchContent_MakeAvailable(json)
 
-add_executable(login 
+add_executable(ss4us 
     main.cpp 
     login.cpp 
     setting.cpp
     list.cpp
 )
 
-target_link_libraries(login PRIVATE ${CURL_LIBRARIES} nlohmann_json::nlohmann_json)
+target_link_libraries(ss4us PRIVATE ${CURL_LIBRARIES} nlohmann_json::nlohmann_json)
