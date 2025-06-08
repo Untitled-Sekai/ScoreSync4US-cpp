@@ -5,7 +5,19 @@
 #include "setting.h"
 #include "list.h"
 
+#ifdef _WIN32
+#include <windows.h>
+void setConcoleUTF8() {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+}
+#endif
+
 int main() {
+    #ifdef _WIN32
+    setConcoleUTF8();
+    #endif
+    
     curl_global_init(CURL_GLOBAL_ALL);
     
     std::string username, password;
@@ -23,124 +35,124 @@ int main() {
         
         int choice = 0;
         do {
-            std::cout << "\n==== メニュー ====\n";
-            std::cout << "1. 自分の譜面リストを表示\n";
-            std::cout << "2. 別のユーザーの譜面リストを表示\n";
-            std::cout << "0. 終了\n";
-            std::cout << "選択: ";
+            std::cout << "\n==== menu ====\n";
+            std::cout << "1. Show my charts\n";
+            std::cout << "2. Show another user's charts\n";
+            std::cout << "0. Quit\n";
+            std::cout << "Select: ";
             std::cin >> choice;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 改行文字を消費
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             
             std::string targetUsername;
             
             switch(choice) {
                 case 1:
                     {
-                        std::cout << "\n自分の譜面リストを取得中...\n";
+                        std::cout << "\nGetting my charts...\n";
                         std::vector<ChartData> charts = getUserCharts(token, username);
                         
                         if (!charts.empty()) {
                             json formattedData = formatChartsData(charts);
-                            std::cout << "\n取得した譜面数: " << charts.size() << "\n\n";
+                            std::cout << "\nCharts: " << charts.size() << "\n\n";
                             
                             for (size_t i = 0; i < charts.size(); ++i) {
                                 std::cout << i+1 << ". " << charts[i].title 
                                           << " / " << charts[i].artist
-                                          << " (作者: " << charts[i].author << ")\n";
+                                          << " (author: " << charts[i].author << ")\n";
                             }
                             
                             int chartIndex = -1;
-                            std::cout << "\n詳細を表示する譜面番号を入力してください（0で戻る）: ";
+                            std::cout << "\nEnter chart number to view details (0 to go back): ";
                             std::cin >> chartIndex;
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                             
                             if (chartIndex > 0 && chartIndex <= static_cast<int>(charts.size())) {
                                 const ChartData& selectedChart = charts[chartIndex - 1];
                                 
-                                std::cout << "\n==== 譜面詳細 ====\n";
-                                std::cout << "名前: " << selectedChart.name << "\n";
-                                std::cout << "タイトル: " << selectedChart.title << "\n";
-                                std::cout << "アーティスト: " << selectedChart.artist << "\n";
-                                std::cout << "譜面作者: " << selectedChart.author << "\n";
-                                std::cout << "難易度: " << selectedChart.rating << "\n";
-                                std::cout << "アップロード日: " << selectedChart.uploadDate << "\n";
-                                std::cout << "説明: " << selectedChart.description << "\n";
+                                std::cout << "\n==== Details ====\n";
+                                std::cout << "ID: " << selectedChart.name << "\n";
+                                std::cout << "Title: " << selectedChart.title << "\n";
+                                std::cout << "Artist: " << selectedChart.artist << "\n";
+                                std::cout << "Charter: " << selectedChart.author << "\n";
+                                std::cout << "Difficulty: " << selectedChart.rating << "\n";
+                                std::cout << "Upload date: " << selectedChart.uploadDate << "\n";
+                                std::cout << "Description: " << selectedChart.description << "\n";
                                 
-                                std::cout << "タグ: ";
+                                std::cout << "Tags: ";
                                 for (const auto& tag : selectedChart.tags) {
                                     std::cout << tag << " ";
                                 }
                                 std::cout << "\n";
                                 
-                                std::cout << "公開状態: " << (selectedChart.isPublic ? "公開" : "非公開") << "\n";
-                                std::cout << "コラボレーション: " << (selectedChart.isCollaboration ? "あり" : "なし") << "\n";
-                                std::cout << "プライベート共有: " << (selectedChart.isPrivateShare ? "あり" : "なし") << "\n";
+                                std::cout << "Public status: " << (selectedChart.isPublic ? "Public" : "Private") << "\n";
+                                std::cout << "Collaboration: " << (selectedChart.isCollaboration ? "Yes" : "No") << "\n";
+                                std::cout << "Private sharing: " << (selectedChart.isPrivateShare ? "Yes" : "No") << "\n";
                             }
                         } else {
-                            std::cout << "譜面が見つかりませんでした。\n";
+                            std::cout << "No charts found.\n";
                         }
                     }
                     break;
                     
                 case 2:
-                    std::cout << "\n譜面を表示するユーザー名を入力: ";
+                    std::cout << "\nEnter username to display their charts: ";
                     std::getline(std::cin, targetUsername);
                     
                     if (!targetUsername.empty()) {
-                        std::cout << targetUsername << " の譜面リストを取得中...\n";
+                        std::cout << "Retrieving " << targetUsername << "'s chart list...\n";
                         std::vector<ChartData> charts = getUserCharts(token, targetUsername);
                         
                         if (!charts.empty()) {
                             json formattedData = formatChartsData(charts);
-                            std::cout << "\n取得した譜面数: " << charts.size() << "\n\n";
+                            std::cout << "\nNumber of charts retrieved: " << charts.size() << "\n\n";
                             
                             for (size_t i = 0; i < charts.size(); ++i) {
                                 std::cout << i+1 << ". " << charts[i].title 
                                           << " / " << charts[i].artist
-                                          << " (作者: " << charts[i].author << ")\n";
+                                          << " (author: " << charts[i].author << ")\n";
                             }
 
                             int chartIndex = -1;
-                            std::cout << "\n詳細を表示する譜面番号を入力してください（0で戻る）: ";
+                            std::cout << "\nEnter chart number to view details (0 to go back): ";
                             std::cin >> chartIndex;
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                             
                             if (chartIndex > 0 && chartIndex <= static_cast<int>(charts.size())) {
                                 const ChartData& selectedChart = charts[chartIndex - 1];
                                 
-                                std::cout << "\n==== 譜面詳細 ====\n";
-                                std::cout << "名前: " << selectedChart.name << "\n";
-                                std::cout << "タイトル: " << selectedChart.title << "\n";
-                                std::cout << "アーティスト: " << selectedChart.artist << "\n";
-                                std::cout << "譜面作者: " << selectedChart.author << "\n";
-                                std::cout << "難易度: " << selectedChart.rating << "\n";
-                                std::cout << "アップロード日: " << selectedChart.uploadDate << "\n";
-                                std::cout << "説明: " << selectedChart.description << "\n";
+                                std::cout << "\n==== Chart Details ====\n";
+                                std::cout << "Name: " << selectedChart.name << "\n";
+                                std::cout << "Title: " << selectedChart.title << "\n";
+                                std::cout << "Artist: " << selectedChart.artist << "\n";
+                                std::cout << "Charter: " << selectedChart.author << "\n";
+                                std::cout << "Difficulty: " << selectedChart.rating << "\n";
+                                std::cout << "Upload date: " << selectedChart.uploadDate << "\n";
+                                std::cout << "Description: " << selectedChart.description << "\n";
                                 
-                                std::cout << "タグ: ";
+                                std::cout << "Tags: ";
                                 for (const auto& tag : selectedChart.tags) {
                                     std::cout << tag << " ";
                                 }
                                 std::cout << "\n";
                                 
-                                std::cout << "公開状態: " << (selectedChart.isPublic ? "公開" : "非公開") << "\n";
-                                std::cout << "コラボレーション: " << (selectedChart.isCollaboration ? "あり" : "なし") << "\n";
-                                std::cout << "プライベート共有: " << (selectedChart.isPrivateShare ? "あり" : "なし") << "\n";
+                                std::cout << "Public status: " << (selectedChart.isPublic ? "Public" : "Private") << "\n";
+                                std::cout << "Collaboration: " << (selectedChart.isCollaboration ? "Yes" : "No") << "\n";
+                                std::cout << "Private sharing: " << (selectedChart.isPrivateShare ? "Yes" : "No") << "\n";
                             }
                         } else {
-                            std::cout << "譜面が見つかりませんでした。\n";
+                            std::cout << "No charts found.\n";
                         }
                     } else {
-                        std::cout << "ユーザー名が入力されていません。\n";
+                        std::cout << "No username entered.\n";
                     }
                     break;
                     
                 case 0:
-                    std::cout << "終了します。\n";
+                    std::cout << "Exiting.\n";
                     break;
                     
                 default:
-                    std::cout << "無効な選択です。もう一度お試しください。\n";
+                    std::cout << "Invalid choice. Please try again.\n";
                     break;
             }
         } while (choice != 0);
