@@ -41,6 +41,7 @@ jobs:
     - name: Build (Windows)
       if: matrix.os == 'windows-latest'
       run: |
+        if exist build rmdir /s /q build
         mkdir build
         cd build
         cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
@@ -50,6 +51,7 @@ jobs:
     - name: Build (Linux)
       if: matrix.os == 'ubuntu-latest'
       run: |
+        rm -rf build
         mkdir build
         cd build
         cmake ..
