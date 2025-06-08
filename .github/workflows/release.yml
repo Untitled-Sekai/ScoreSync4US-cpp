@@ -19,7 +19,7 @@ jobs:
             output-name: ss4us-windows.exe
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup CMake
       uses: lukka/get-cmake@latest
@@ -57,7 +57,7 @@ jobs:
         cp ss4us ../ss4us-linux
         
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.output-name }}
         path: ${{ matrix.output-name }}
@@ -69,7 +69,7 @@ jobs:
     
     steps:
     - name: Download all artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
     
     - name: Create Release
       id: create_release
