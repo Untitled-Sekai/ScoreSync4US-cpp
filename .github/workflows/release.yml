@@ -19,7 +19,7 @@ jobs:
           - os: ubuntu-latest
             output-name: ss4us-linux
           - os: windows-latest
-            output-name: ss4us-windows.exe
+            output-name: ss4us-windows
     
     steps:
     - uses: actions/checkout@v4
@@ -87,7 +87,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ss4us-windows.zip
+          ss4us-windows/ss4us-windows.zip
           ss4us-linux/ss4us-linux
         draft: false
         prerelease: false
