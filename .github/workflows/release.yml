@@ -87,7 +87,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ss4us-windows.zip/ss4us-windows.zip
+          ss4us-windows.zip
           ss4us-linux/ss4us-linux
         draft: false
         prerelease: false
