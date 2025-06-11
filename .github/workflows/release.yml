@@ -50,7 +50,10 @@ jobs:
         cd build
         cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CXX_FLAGS="/utf-8 /DNOMINMAX"
         cmake --build . --config Release
-        copy Release\ss4us.exe ..\ss4us-windows.exe
+        mkdir ..\ss4us-windows
+        copy Release\ss4us.exe ..\ss4us-windows\ss4us.exe
+        copy C:\vcpkg\installed\x64-windows\bin\libcurl.dll ..\ss4us-windows\
+        powershell Compress-Archive -Path ..\ss4us-windows -DestinationPath ..\ss4us-windows.zip
 
     - name: Build (Linux)
       if: matrix.os == 'ubuntu-latest'
@@ -66,7 +69,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.output-name }}
-        path: ${{ matrix.output-name }}
+        path: |
+          ss4us-linux
+          ss4us-windows.zip
         
   release:
     name: Create Release
@@ -82,7 +87,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ss4us-windows.exe/ss4us-windows.exe
+          ss4us-windows.zip/ss4us-windows.zip
           ss4us-linux/ss4us-linux
         draft: false
         prerelease: false
