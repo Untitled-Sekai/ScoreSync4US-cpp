@@ -52,7 +52,10 @@ jobs:
         cmake --build . --config Release
         mkdir ..\ss4us-windows
         copy Release\ss4us.exe ..\ss4us-windows\ss4us.exe
-        copy C:\vcpkg\installed\x64-windows\bin\libcurl.dll ..\ss4us-windows\
+        
+        REM すべての必要なDLLをコピー
+        xcopy C:\vcpkg\installed\x64-windows\bin\*.dll ..\ss4us-windows\ /Y
+        
         powershell Compress-Archive -Path ..\ss4us-windows -DestinationPath ..\ss4us-windows.zip
 
     - name: Build (Linux)
