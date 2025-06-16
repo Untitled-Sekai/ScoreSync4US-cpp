@@ -1,5 +1,5 @@
-/mnt/c/Users/pilim/Documents/c++++/ss4us/build/CMakeFiles/login.dir
-/mnt/c/Users/pilim/Documents/c++++/ss4us/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/pilim/Documents/c++++/ss4us/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/CMakeFiles/ss4us.dir
+/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-build/CMakeFiles/rebuild_cache.dir

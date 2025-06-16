@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/pilim/Documents/c++++/ss4us
+CMAKE_SOURCE_DIR = /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/pilim/Documents/c++++/ss4us/build
+CMAKE_BINARY_DIR = /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/pilim/Documents/c++++/ss4us/build/CMakeFiles /mnt/c/Users/pilim/Documents/c++++/ss4us/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/CMakeFiles /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/pilim/Documents/c++++/ss4us/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named login
+# Target rules for targets named ss4us
 
 # Build rule for target.
-login: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 login
-.PHONY : login
+ss4us: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ss4us
+.PHONY : ss4us
 
 # fast build rule for target.
-login/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/build
-.PHONY : login/fast
+ss4us/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/build
+.PHONY : ss4us/fast
+
+FileWatcher.o: FileWatcher.cpp.o
+.PHONY : FileWatcher.o
+
+# target to build an object file
+FileWatcher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/FileWatcher.cpp.o
+.PHONY : FileWatcher.cpp.o
+
+FileWatcher.i: FileWatcher.cpp.i
+.PHONY : FileWatcher.i
+
+# target to preprocess a source file
+FileWatcher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/FileWatcher.cpp.i
+.PHONY : FileWatcher.cpp.i
+
+FileWatcher.s: FileWatcher.cpp.s
+.PHONY : FileWatcher.s
+
+# target to generate assembly for a file
+FileWatcher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/FileWatcher.cpp.s
+.PHONY : FileWatcher.cpp.s
+
+config.o: config.cpp.o
+.PHONY : config.o
+
+# target to build an object file
+config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/config.cpp.o
+.PHONY : config.cpp.o
+
+config.i: config.cpp.i
+.PHONY : config.i
+
+# target to preprocess a source file
+config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/config.cpp.i
+.PHONY : config.cpp.i
+
+config.s: config.cpp.s
+.PHONY : config.s
+
+# target to generate assembly for a file
+config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/config.cpp.s
+.PHONY : config.cpp.s
 
 list.o: list.cpp.o
 .PHONY : list.o
 
 # target to build an object file
 list.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/list.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/list.cpp.o
 .PHONY : list.cpp.o
 
 list.i: list.cpp.i
@@ -142,7 +190,7 @@ list.i: list.cpp.i
 
 # target to preprocess a source file
 list.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/list.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/list.cpp.i
 .PHONY : list.cpp.i
 
 list.s: list.cpp.s
@@ -150,7 +198,7 @@ list.s: list.cpp.s
 
 # target to generate assembly for a file
 list.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/list.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/list.cpp.s
 .PHONY : list.cpp.s
 
 login.o: login.cpp.o
@@ -158,7 +206,7 @@ login.o: login.cpp.o
 
 # target to build an object file
 login.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/login.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/login.cpp.o
 .PHONY : login.cpp.o
 
 login.i: login.cpp.i
@@ -166,7 +214,7 @@ login.i: login.cpp.i
 
 # target to preprocess a source file
 login.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/login.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/login.cpp.i
 .PHONY : login.cpp.i
 
 login.s: login.cpp.s
@@ -174,7 +222,7 @@ login.s: login.cpp.s
 
 # target to generate assembly for a file
 login.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/login.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/login.cpp.s
 .PHONY : login.cpp.s
 
 main.o: main.cpp.o
@@ -182,7 +230,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -190,7 +238,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -198,7 +246,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 setting.o: setting.cpp.o
@@ -206,7 +254,7 @@ setting.o: setting.cpp.o
 
 # target to build an object file
 setting.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/setting.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/setting.cpp.o
 .PHONY : setting.cpp.o
 
 setting.i: setting.cpp.i
@@ -214,7 +262,7 @@ setting.i: setting.cpp.i
 
 # target to preprocess a source file
 setting.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/setting.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/setting.cpp.i
 .PHONY : setting.cpp.i
 
 setting.s: setting.cpp.s
@@ -222,7 +270,7 @@ setting.s: setting.cpp.s
 
 # target to generate assembly for a file
 setting.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/login.dir/build.make CMakeFiles/login.dir/setting.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ss4us.dir/build.make CMakeFiles/ss4us.dir/setting.cpp.s
 .PHONY : setting.cpp.s
 
 # Help Target
@@ -233,7 +281,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... login"
+	@echo "... ss4us"
+	@echo "... FileWatcher.o"
+	@echo "... FileWatcher.i"
+	@echo "... FileWatcher.s"
+	@echo "... config.o"
+	@echo "... config.i"
+	@echo "... config.s"
 	@echo "... list.o"
 	@echo "... list.i"
 	@echo "... list.s"

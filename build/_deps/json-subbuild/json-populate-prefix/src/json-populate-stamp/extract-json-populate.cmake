@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.5)
 
 # Make file names absolute:
 #
-get_filename_component(filename "/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-subbuild/json-populate-prefix/src/json.tar.xz" ABSOLUTE)
-get_filename_component(directory "/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-src" ABSOLUTE)
+get_filename_component(filename "/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-subbuild/json-populate-prefix/src/json.tar.xz" ABSOLUTE)
+get_filename_component(directory "/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-src" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'

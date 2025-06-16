@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(CURL REQUIRED)
 include_directories(${CURL_INCLUDE_DIRS})
 
+find_package(SQLite3 REQUIRED)
+
 include(FetchContent)
 FetchContent_Declare(json
   URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
@@ -22,6 +24,8 @@ add_executable(ss4us
     login.cpp 
     setting.cpp
     list.cpp
+    config.cpp
+    FileWatcher.cpp
 )
 
-target_link_libraries(ss4us PRIVATE ${CURL_LIBRARIES} nlohmann_json::nlohmann_json)
+target_link_libraries(ss4us PRIVATE ${CURL_LIBRARIES} SQLite::SQLite3 nlohmann_json::nlohmann_json)

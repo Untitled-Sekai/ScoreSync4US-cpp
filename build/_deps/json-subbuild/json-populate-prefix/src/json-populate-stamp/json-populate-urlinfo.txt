@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=url
-command=/usr/bin/cmake;-P;/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/download-json-populate.cmake;COMMAND;/usr/bin/cmake;-P;/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/verify-json-populate.cmake;COMMAND;/usr/bin/cmake;-P;/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/extract-json-populate.cmake
-source_dir=/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-src
-work_dir=/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps
+command=/usr/bin/cmake;-P;/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/download-json-populate.cmake;COMMAND;/usr/bin/cmake;-P;/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/verify-json-populate.cmake;COMMAND;/usr/bin/cmake;-P;/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/extract-json-populate.cmake
+source_dir=/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-src
+work_dir=/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps
 url(s)=https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
 hash=
 no_extract=

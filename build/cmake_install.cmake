@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/pilim/Documents/c++++/ss4us
+# Install script for directory: /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-build/cmake_install.cmake")
+  include("/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-build/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/pilim/Documents/c++++/ss4us/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

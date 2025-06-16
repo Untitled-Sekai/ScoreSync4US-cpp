@@ -20,8 +20,8 @@ project(json-populate NONE)
 include(ExternalProject)
 ExternalProject_Add(json-populate
                      "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "TRUE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz"
-                    SOURCE_DIR          "/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-src"
-                    BINARY_DIR          "/mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-build"
+                    SOURCE_DIR          "/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-src"
+                    BINARY_DIR          "/mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

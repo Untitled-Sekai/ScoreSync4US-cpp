@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/pilim/Documents/c++++/ss4us/build/_deps/json-src
+# Install script for directory: /mnt/c/Users/pilim/Documents/dev/ScoreSync4US-cpp/build/_deps/json-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

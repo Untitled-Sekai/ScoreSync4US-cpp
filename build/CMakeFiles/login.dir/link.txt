@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/login.dir/main.cpp.o CMakeFiles/login.dir/login.cpp.o CMakeFiles/login.dir/setting.cpp.o CMakeFiles/login.dir/list.cpp.o -o login  /usr/lib/x86_64-linux-gnu/libcurl.so 
