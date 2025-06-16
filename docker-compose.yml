@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  linux-build:
+    build:
+      context: .
+      dockerfile: Dockerfile.linux
+    volumes:
+      - ./release:/app/release
+    command: sh -c "cp /app/build/ss4us /app/release/ss4us-linux"
+    environment:
+      - MAKEFLAGS=-j2
+
+  windows-build:
+    build:
+      context: .
+      dockerfile: Dockerfile.windows
+    volumes:
+      - ./release:/

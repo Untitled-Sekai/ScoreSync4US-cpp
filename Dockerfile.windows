@@ -1,0 +1,98 @@
+FROM ubuntu:22.04 AS builder
+
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/jp.archive.ubuntu.com\/ubuntu\//g' /etc/apt/sources.list && \
+    echo 'Acquire::http::Timeout "180";' > /etc/apt/apt.conf.d/99timeout && \
+    echo 'Acquire::retries "10";' >> /etc/apt/apt.conf.d/99timeout
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    git \
+    wget \
+    python3 \
+    python-is-python3 \  
+    && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    autoconf \
+    automake \
+    autopoint \
+    bison \
+    bzip2 \
+    flex \
+    g++-multilib \
+    gettext \
+    && rm -rf /var/lib/apt/lists/*
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gperf \
+    intltool \
+    libc6-dev-i386 \
+    libgdk-pixbuf2.0-dev \
+    libltdl-dev \
+    libssl-dev \
+    libtool-bin \
+    libxml-parser-perl \
+    lzip \
+    && rm -rf /var/lib/apt/lists/*
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    make \
+    openssl \
+    p7zip-full \
+    patch \
+    perl \
+    python3 \
+    python3-mako \
+    ruby \
+    sed \
+    unzip \
+    xz-utils \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt
+
+RUN git clone --depth 1 --branch stable https://github.com/mxe/mxe.git || git clone --depth 1 https://github.com/mxe/mxe.git
+
+WORKDIR /opt/mxe
+
+
+RUN make MXE_TARGETS=x86_64-w64-mingw32.shared.posix MXE_PLUGIN_DIRS= curl sqlite -j2
+
+ENV PATH="/opt/mxe/usr/bin:${PATH}"
+
+ENV MXE_TARGET=x86_64-w64-mingw32.shared.posix
+
+WORKDIR /app
+COPY . .
+
+RUN rm -rf build-win || true
+
+RUN mkdir -p build-win && \
+    cd build-win && \
+    /opt/mxe/usr/bin/${MXE_TARGET}-cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make -j2
+
+RUN mkdir -p /output && \
+    cp build-win/ss4us.exe /output/ss4us-windows.exe && \
+    cp /opt/mxe/usr/${MXE_TARGET}/bin/*.dll /output/
+
+RUN mkdir -p /app/release && \
+    cp build-win/ss4us.exe /app/release/ss4us-windows.exe && \
+    cp /opt/mxe/usr/${MXE_TARGET}/bin/*.dll /app/release/
+
+
+FROM alpine:latest
+COPY --from=builder /app/release /app/release/
+COPY --from=builder /output /output/
+
+COPY --from=builder /app/release/*.dll /
+COPY --from=builder /app/release/ss4us-windows.exe /ss4us-windows.exe
+
+CMD ["ls", "-la", "/"]

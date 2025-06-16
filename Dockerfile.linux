@@ -1,0 +1,39 @@
+FROM ubuntu:22.04 AS builder
+
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    libcurl4-openssl-dev \
+    libsqlite3-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY . .
+
+RUN rm -rf build || true
+
+RUN mkdir -p build && \
+    cd build && \
+    cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make -j2
+
+RUN mkdir -p /app/release && \
+    cp /app/build/ss4us /app/release/ss4us-linux
+
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    libcurl4 \
+    libsqlite3-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY --from=builder /app/build/ss4us .
+COPY --from=builder /app/release /app/release
+
+CMD ["./ss4us"]
